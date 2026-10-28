@@ -1,0 +1,69 @@
+\section{Dziennik promptów użytych z modelem}
+\label{app:prompty}
+
+Rejestr promptów wysyłanych do modeli podczas tworzenia projektu (kod, dokumentacja, raport).
+Wymóg przedmiotu: dokumentować najważniejsze prompty, iteracje, modele i ustawienia. Wpisy
+dodajemy chronologicznie na bieżąco (zasady w \texttt{CLAUDE.md}). Treści wygenerowane przez
+AI są oznaczone w raporcie, a wyniki weryfikuje zespół.
+
+Nie obejmuje promptów systemowych samego asystenta RAG: te są w \texttt{prompts/} i opisane w
+sekcji o strategii promptowania.
+
+% ---------------------------------------------------------------- wpisy
+
+\subsection*{Etap wyboru tematu}
+
+Temat wybrano w rozmowie z Gemini (burza mózgów, 10 kandydatów, wybór tematu~1). Wpisy 1 i~2
+dokumentują ten etap. Dokładne wersje modelu i ustawienia nie są znane (czat webowy).
+
+\promptentry{1}{nieustalona (eksport rozmowy: 2026-10-28)}{Gemini (wersja nieustalona), czat webowy}{nieustalone}
+  {Burza mózgów: 10 tematów dla projektu RAG, roadmapy i stacki}
+\begin{lstlisting}
+Przeanalizuj mi ten projekt robie z ziomalem temat 12 czyli poprostu RAG najbardziej
+ciekawszy, zrob brainstorming wypisz mi z 10 tematow pod co tego raga mozna zrobic jaka
+tematyke uzyc aby dobrze pokazac karmienie llma ragiem takie z ragiem i bez raga jak to
+wyglada albo jakis chatbot na jakiejs stronie albo cos w tym stylu, odpal research exa
+mcp i zrob mi brainstorming odnosnie tematow i wypisz do kazdego krociutka road mapke jak
+do tego podejsc i stack oczywiscie. Prowadzacy polecal jakas biblioteke pythonowska do
+zrobienia tego raga ale nie pamietam [...]
+\end{lstlisting}
+\promptresult{Lista 10 tematów z krótką roadmapą i stackiem. Wskazanie Chainlit, Streamlit i
+Gradio jako bibliotek UI. Zestawienie wymagań zaliczeniowych.}
+
+\promptentry{2}{nieustalona (eksport rozmowy: 2026-10-28)}{Gemini (wersja nieustalona), czat webowy}{nieustalone}
+  {Wybór tematu~1 (sylabusy), doprecyzowanie UI, darmowych modeli i scenariuszy odmowy}
+\begin{lstlisting}
+1. Uczelniany Asystent Sylabusow i Zasad Zaliczen [opis tematu z poprzedniej odpowiedzi]
+Dobra ewidentnie bierzemy to, rozwin ten temat powiedz stack jak bedzie UI wygladac czy
+to sam chatbot poprostu zrobimy czy jakis front w react co myslisz wg tego projektu i
+wytycznych daj znac. Dodatkowo tak polecal on gradio ale daj znac ktory jest najlepszy
+chainlit czy streamlit [...] czy z openroutera da sie wziac api darmowego modelu zeby
+potestowac tego raga [...] Dodatkowo jak zlapac tego raga na tym ze nie bedzie chcial
+odpowiedziec na wiadomosc w danym temacie [...]
+\end{lstlisting}
+\promptresult{Temat~1 wybrany. Rekomendacja gotowej biblioteki Pythona zamiast frontu w React,
+wstępny faworyt Chainlit, darmowe modele z OpenRoutera, lokalne embeddingi, trzy scenariusze
+testowe odmowy. Rekomendacje do weryfikacji w etapie wyboru stacku.}
+
+\subsection*{Etap inicjalizacji projektu}
+
+\promptentry{3}{2026-10-28}{Claude Sonnet 5.5 (\texttt{claude-sonnet-5-5}), Claude Code}{medium}
+  {Analiza pomysłu projektu, inicjalizacja repozytorium, struktura plików, szkielet raportu LaTeX}
+\begin{lstlisting}
+Przenalizuj mi idea calego projektu jaki tu rozpisalem (PDF: Tematy i roadmapy
+projektow RAG + zrzuty wymagan przedmiotu), dodatkowo wez moja rozmowe z gemini
+w ktorym dyskutowalem na temat projektu, zacznij od inicjalizacji repo daj maina
+zrob go narazie publicznie, stworz README oraz przygotuj jakas sensowna strukture
+plikow, cos w stylu folder raport gdzie bedzie miejsce do generowania latexa z
+raportem promptow jakie uzyte z modelem; do claude.md dopisz aby w tym pliku
+latex odrazu spisywal prompty uzyte z modelem i effortem, ta rozmowe z gemini
+tez troche wez i dopisz juz na start ten proces jak klepnelismy temat
+1. Uczelniany Asystent Sylabusow i Zasad Zaliczen [opis tematu z rozmowy: bez RAG
+vs z RAG, roadmapa, stack Python/LangChain/PyPDFLoader/ChromaDB/Streamlit-Chainlit]
+i opisz mi to i zaczniemy sobie od takiej wstepnej inicjalizacji projektu, a
+stack w nastepnym etapie sie zajmiemy po analizie gradio/streamlit, no
+przejrzymy.
+\end{lstlisting}
+\promptresult{Repozytorium z gałęzią \texttt{main}, README, \texttt{docs/} (wymagania, opis
+projektu, plan), szkielet raportu w \texttt{raport/}, \texttt{CLAUDE.md} z regułą dziennika
+promptów. Wybór stacku odłożony do następnego etapu.}

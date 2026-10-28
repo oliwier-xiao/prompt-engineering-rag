@@ -1,0 +1,60 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{indentfirst}
+\usepackage[all]{nowidow}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=bibtex,style=numeric,sorting=nyt]{biblatex}
+\addbibresource{bib/zrodla.bib}
+
+% Listingi z polskimi znakami (listings ignoruje inputenc)
+\lstdefinestyle{prompt}{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=fullflexible,
+  frame=single,
+  rulecolor=\color{black!30},
+  backgroundcolor=\color{black!3},
+  xleftmargin=0.5em,
+  xrightmargin=0.5em,
+  extendedchars=true,
+  inputencoding=utf8,
+  literate=
+    {ą}{{\k{a}}}1 {ć}{{\'c}}1 {ę}{{\k{e}}}1 {ł}{{\l{}}}1
+    {ń}{{\'n}}1 {ó}{{\'o}}1 {ś}{{\'s}}1 {ź}{{\'z}}1 {ż}{{\.z}}1
+    {Ą}{{\k{A}}}1 {Ć}{{\'C}}1 {Ę}{{\k{E}}}1 {Ł}{{\L{}}}1
+    {Ń}{{\'N}}1 {Ó}{{\'O}}1 {Ś}{{\'S}}1 {Ź}{{\'Z}}1 {Ż}{{\.Z}}1
+}
+\lstset{style=prompt}
+
+% Wpis dziennika promptow: #1 nr, #2 data, #3 model, #4 effort, #5 cel.
+% Tresc promptu w srodowisku lstlisting bezposrednio po makrze,
+% a po nim \promptresult{...} z krotkim opisem wyniku.
+\newcommand{\promptentry}[5]{%
+  \needspace{8\baselineskip}%
+  \subsection*{Prompt #1}%
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    \toprule
+    Data & #2 \\
+    Model & #3 \\
+    Effort & #4 \\
+    Cel & #5 \\
+    \bottomrule
+  \end{tabularx}\par\smallskip
+}
+\newcommand{\promptresult}[1]{\par\smallskip\noindent\textbf{Wynik:} #1\par\bigskip}
+
+% Oznaczenie tresci wygenerowanych przez AI
+\newcommand{\aigen}[1]{#1\textsuperscript{\textsc{ai}}}
+
+\usepackage{needspace}

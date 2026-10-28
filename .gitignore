@@ -1,0 +1,38 @@
+# LaTeX
+raport/build/
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.lof
+*.lot
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Sekrety
+.env
+*.key
+
+# Dane lokalne (baza wektorowa, surowe sylabusy moga miec ograniczenia licencyjne)
+data/chroma/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Narzedzia
+.chainlit/
+.files/
+.taste-skill/
+.DS_Store
