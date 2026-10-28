@@ -1,0 +1,121 @@
+% Szablon Inżynierskiego Artykułu Naukowego (PL)
+% Autor: LaTeX Engineer
+% ---------------------------------------------------------
+
+\documentclass[11pt,a4paper,oneside]{article}
+
+% --- Pakiety Podstawowe ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{polski}
+\usepackage{indentfirst}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=25mm,
+    top=25mm,
+}
+
+% --- Typografia i Wygląd ---
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% --- Matematyka i Fizyka ---
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}}
+
+% --- Grafika i Tabele ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+% --- Bibliografia i Linki ---
+\usepackage[style=numeric, sorting=none, language=polish]{biblatex}
+\addbibresource{references.bib}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+% --- Makra Inżynierskie ---
+\newcommand{\unit}[1]{\,\mathrm{#1}}
+
+% --- Nagłówek i Stopka ---
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Inżynierski Artykuł Naukowy}
+\lhead{\leftmark}
+\rfoot{Strona \thepage \ z \pageref{LastPage}}
+
+% --- Dane Dokumentu ---
+\title{Profesjonalna Analiza Inżynierska Systemu X}
+\author{Imię Nazwisko \\ \small Wydział Inżynierii, Politechnika ...}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+W niniejszym artykule przedstawiono kompleksową analizę inżynierską systemu X. Opisano metodykę pomiarową, wyniki eksperymentalne oraz wyciągnięto wnioski dotyczące optymalizacji procesu Y. Uzyskane wyniki wskazują na możliwość poprawy efektywności o \num{12.5}\%.
+\end{abstract}
+
+\section{Wstęp}
+Współczesna inżynieria wymaga precyzyjnych narzędzi do dokumentowania wyników badań. LaTeX stanowi standard w~publikacjach technicznych, zapewniając najwyższą jakość typograficzną oraz spójność dokumentów.
+
+W~sekcji \ref{sec:metodyka} opisano stanowisko badawcze, natomiast w~sekcji \ref{sec:wyniki} przedstawiono zebrane dane.
+
+\section{Metodyka Badawcza}
+\label{sec:metodyka}
+Stanowisko badawcze składało się z~układu X oraz sensora Y. Pomiary przeprowadzono w~temperaturze pokojowej.
+
+\begin{equation}
+    P = V \cdot I \cdot \cos(\varphi)
+\end{equation}
+
+Gdzie:
+\begin{itemize}
+    \item $P$ -- moc czynna [W],
+    \item $V$ -- napięcie [V],
+    \item $I$ -- natężenie prądu [A],
+    \item $\varphi$ -- kąt przesunięcia fazowego.
+\end{itemize}
+
+\section{Wyniki Eksperymentalne}
+\label{sec:wyniki}
+W tabeli \ref{tab:wyniki} zestawiono wyniki dla różnych wariantów obciążenia.
+
+\begin{table}[H]
+    \centering
+    \caption{Porównanie parametrów pracy systemu.}
+    \label{tab:wyniki}
+    \begin{tabular}{lrrr}
+        \toprule
+        Wariant & Napięcie [V] & Prąd [A] & Sprawność (\%) \\
+        \midrule
+        Wariant A & \num{230.1} & \num{1.5} & \num{88.2} \\
+        Wariant B & \num{231.5} & \num{2.1} & \num{91.5} \\
+        Wariant C & \num{229.8} & \num{3.4} & \num{94.7} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Wnioski}
+Analiza danych potwierdza hipotezę o~wzroście sprawności przy wzroście obciążenia w~zbadanym zakresie. Dalsze badania powinny skupić się na wpływie temperatury na stabilność pracy układu.
+
+\printbibliography
+
+\end{document}

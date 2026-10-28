@@ -35,6 +35,26 @@ Zasady:
   asystenta RAG (v1, v2, v3 ...) trzymamy w `prompts/` i opisujemy w sekcji o strategii promptowania.
 - Po wpisie sprawdź kompilację: `cd raport && latexmk -pdf -outdir=build main.tex`.
 
+## LaTeX: skill `latex-engineer`
+
+Skill jest w repo: `.claude/skills/latex-engineer/` (kopia autorskiego skilla, Claude Code ładuje go
+automatycznie po sklonowaniu). Przy każdej pracy nad plikami `.tex` korzystaj z niego i trzymaj
+format raportu:
+
+- `raport/main.tex` zawiera tylko `\input{preamble}` i `\input{sections/...}`. Pakiety i makra są
+  w `raport/preamble.tex`, pogrupowane funkcyjnie (język, typografia, grafika, kod, bibliografia).
+- Jedna sekcja = jeden plik w `raport/sections/`, numerowany (`01-...`). Dziennik promptów w
+  `sections/prompty.tex` (dodatek).
+- Tabele przez `booktabs` (bez pionowych linii). Polskie cudzysłowy `,,tekst''`, twarde spacje po
+  jednoliterowych spójnikach (`a~to`). Kod i prompty w `lstlisting` (styl `prompt`).
+- Styl inżynierski, bez „AI slopu”: konkret zamiast przymiotników, strona czynna, liczby zamiast
+  „znacząco”.
+- Bibliografia tylko ze zweryfikowanych źródeł (DOI lub strona źródła). Wymagania przedmiotu nie
+  są pozycją bibliograficzną (są w `docs/wymagania.md`).
+- Kompilacja: `cd raport && latexmk -pdf -outdir=build main.tex`.
+- Nowy plik `.tex` zakładaj w tym samym układzie. Dla szablonów poza raportem patrz
+  `.claude/skills/latex-engineer/templates/`.
+
 ## Oznaczanie treści AI
 
 Treści w raporcie wygenerowane lub istotnie przekształcone przez AI oznaczamy makrem `\aigen{}`

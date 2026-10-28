@@ -67,3 +67,17 @@ przejrzymy.
 \promptresult{Repozytorium z gałęzią \texttt{main}, README, \texttt{docs/} (wymagania, opis
 projektu, plan), szkielet raportu w \texttt{raport/}, \texttt{CLAUDE.md} z regułą dziennika
 promptów. Wybór stacku odłożony do następnego etapu.}
+
+\promptentry{4}{2026-10-28}{Claude Sonnet 5.5 (\texttt{claude-sonnet-5-5}), Claude Code}{medium}
+  {Dodanie skilla latex-engineer do repo, ujednolicenie formatu LaTeX, usunięcie wpisu z bibliografii}
+\begin{lstlisting}
+Dodaj do repozytorium mojego autorskiego skilla latex-engineer aby collaborator tez
+mogl korzystac i zeby plik sie tworzyl w podobnej formatce, w claude.md tez mozna.
+Usun tez z biblografii [wklejony wpis wymagania-przedmiotu z pliku .bbl] potem jakies
+sensowniejsze materialy bedziemy dodawac do biblografii, w tym co dopisales jest tylko
+doslownie jaki temat mamy i wytyczne
+\end{lstlisting}
+\promptresult{Skill skopiowany do \texttt{.claude/skills/latex-engineer/}. Preambuła
+przeorganizowana według szablonu skilla (grupy pakietów, nagłówek i stopka). Reguły LaTeX
+dopisane do \texttt{CLAUDE.md}. Wpis z bibliografii usunięty, \texttt{\textbackslash printbibliography}
+wyłączone do czasu pierwszych zweryfikowanych źródeł.}

@@ -40,6 +40,8 @@ Pełny opis pomysłu i decyzji: [`docs/projekt.md`](docs/projekt.md).
 .
 ├── README.md             ten plik
 ├── CLAUDE.md             instrukcje dla agenta (m.in. obowiązkowy dziennik promptów)
+├── .claude/              wspólna konfiguracja Claude Code (bez współautorstwa w commitach)
+│   └── skills/latex-engineer/   skill do pracy z LaTeX-em (dla całego zespołu)
 ├── docs/                 wymagania, opis projektu, decyzje (ADR), plan pracy
 ├── data/
 │   ├── raw/              źródłowe sylabusy (poza gitem, patrz licencje)
@@ -65,6 +67,8 @@ latexmk -C -outdir=build                # sprzątanie
 ```
 
 Wymaga TeX Live z pakietami `babel-polish`, `listings`, `booktabs`, `biblatex`.
+Pliki `.tex` powstają według skilla `latex-engineer` (`.claude/skills/latex-engineer/`), który
+Claude Code ładuje automatycznie po sklonowaniu repo.
 Dziennik promptów użytych z modelem (z modelem i effortem) prowadzimy na bieżąco w
 [`raport/sections/prompty.tex`](raport/sections/prompty.tex), zasady w [`CLAUDE.md`](CLAUDE.md).
 

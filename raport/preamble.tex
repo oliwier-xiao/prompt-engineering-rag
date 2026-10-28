@@ -1,21 +1,46 @@
+% Preambuła zgodna ze skillem latex-engineer (.claude/skills/latex-engineer):
+% pakiety pogrupowane funkcyjnie, jeden plik, bez pakietów w main.tex.
+
+% --- Język (PL) ---
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[polish]{babel}
-\usepackage{lmodern}
-\usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{indentfirst}
-\usepackage[all]{nowidow}
+
+% --- Typografia i układ strony ---
+\usepackage{lmodern}
 \usepackage{microtype}
+\usepackage[all]{nowidow}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{needspace}
+\usepackage{enumitem}
+
+% --- Grafika i tabele ---
+\usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{graphicx}
+\usepackage{caption}
 \usepackage{xcolor}
-\usepackage{enumitem}
-\usepackage{listings}
-\usepackage[hidelinks]{hyperref}
-\usepackage[backend=bibtex,style=numeric,sorting=nyt]{biblatex}
-\addbibresource{bib/zrodla.bib}
 
+% --- Kod i listingi ---
+\usepackage{listings}
+
+% --- Nagłówek i stopka ---
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\leftmark}
+\rhead{RAG: Asystent Sylabusów}
+\cfoot{Strona \thepage{} z \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Bibliografia i linki ---
+\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+\addbibresource{bib/zrodla.bib}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+% --- Makra projektu ---
 % Listingi z polskimi znakami (listings ignoruje inputenc)
 \lstdefinestyle{prompt}{
   basicstyle=\ttfamily\small,
@@ -57,4 +82,3 @@
 % Oznaczenie tresci wygenerowanych przez AI
 \newcommand{\aigen}[1]{#1\textsuperscript{\textsc{ai}}}
 
-\usepackage{needspace}
