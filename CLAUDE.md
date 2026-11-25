@@ -6,16 +6,25 @@ Pełny kontekst: `README.md`, `docs/projekt.md`, `docs/wymagania.md`, `docs/plan
 ## Dziennik promptów (OBOWIĄZKOWE)
 
 Przedmiot wymaga dokumentowania promptów, iteracji, modeli i ustawień. Dziennik prowadzimy w
-LaTeX-u od razu, nie na koniec: **`raport/sections/prompty.tex`**.
+LaTeX-u od razu, nie na koniec. Każda osoba ma własny plik (brak konfliktów przy scalaniu):
+
+| Osoba | Plik | Numeracja |
+|---|---|---|
+| Oliwier | `raport/sections/prompty/oliwier.tex` | O1, O2, ... |
+| Ignacy | `raport/sections/prompty/ignacy.tex` | I1, I2, ... |
+
+Kim jest użytkownik, ustal z `git config user.name`; gdy nie pasuje do żadnej osoby, zapytaj.
+Pisz tylko do pliku tej osoby. `raport/sections/prompty.tex` jedynie dołącza oba pliki: nie
+dopisuj tam wpisów.
 
 Po każdym prompcie użytkownika, który zmienia coś w projekcie (kod, dokumenty, dane, raport,
-decyzje), dopisz wpis na końcu tego pliku, w tej samej turze, przed zakończeniem odpowiedzi.
+decyzje), dopisz wpis na końcu swojego pliku, w tej samej turze, przed zakończeniem odpowiedzi.
 Pomijaj tylko czyste pytania bez skutku w repo (np. „co robi ta funkcja?”).
 
 Format wpisu (makra z `raport/preamble.tex`):
 
 ```latex
-\promptentry{N}{RRRR-MM-DD}{Nazwa modelu (id modelu), narzędzie}{effort}{Krótki cel}
+\promptentry{O1}{RRRR-MM-DD}{Nazwa modelu (id modelu), narzędzie}{effort}{Krótki cel}
 \begin{lstlisting}
 Treść promptu (dosłownie albo z oznaczonym skrótem [...]).
 \end{lstlisting}
@@ -24,7 +33,8 @@ Treść promptu (dosłownie albo z oznaczonym skrótem [...]).
 
 Zasady:
 
-- `N` rośnie o 1; sprawdź ostatni numer w pliku.
+- Numer: prefiks osoby (`O`/`I`) + kolejny numer; sprawdź ostatni wpis w swoim pliku.
+- Nowy etap pracy: `\subsubsection*{Etap ...}` przed pierwszym wpisem etapu.
 - **Model i effort** bierz z bieżącej sesji (`/model`, `/effort`; nagłówek środowiska podaje
   nazwę i id modelu). Nie zgaduj: jeśli nie znasz wartości, wpisz `nieustalone`.
 - Prompt wklejaj w `lstlisting` (bezpieczny dla znaków specjalnych LaTeX-a). Zrzuty ekranu i
@@ -44,7 +54,7 @@ format raportu:
 - `raport/main.tex` zawiera tylko `\input{preamble}` i `\input{sections/...}`. Pakiety i makra są
   w `raport/preamble.tex`, pogrupowane funkcyjnie (język, typografia, grafika, kod, bibliografia).
 - Jedna sekcja = jeden plik w `raport/sections/`, numerowany (`01-...`). Dziennik promptów w
-  `sections/prompty.tex` (dodatek).
+  `sections/prompty.tex` (dodatek), wpisy w `sections/prompty/<osoba>.tex`.
 - Tabele przez `booktabs` (bez pionowych linii). Polskie cudzysłowy `,,tekst''`, twarde spacje po
   jednoliterowych spójnikach (`a~to`). Kod i prompty w `lstlisting` (styl `prompt`).
 - Styl inżynierski, bez „AI slopu”: konkret zamiast przymiotników, strona czynna, liczby zamiast

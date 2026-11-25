@@ -53,7 +53,7 @@ Pełny opis pomysłu i decyzji: [`docs/projekt.md`](docs/projekt.md).
 └── raport/               raport końcowy w LaTeX
     ├── main.tex
     ├── preamble.tex
-    ├── sections/         rozdziały raportu + prompty.tex (dziennik promptów)
+    ├── sections/         rozdziały raportu + prompty/ (dziennik promptów per osoba)
     ├── figures/
     └── bib/
 ```
@@ -70,7 +70,7 @@ Wymaga TeX Live z pakietami `babel-polish`, `listings`, `booktabs`, `biblatex`.
 Pliki `.tex` powstają według skilla `latex-engineer` (`.claude/skills/latex-engineer/`), który
 Claude Code ładuje automatycznie po sklonowaniu repo.
 Dziennik promptów użytych z modelem (z modelem i effortem) prowadzimy na bieżąco w
-[`raport/sections/prompty.tex`](raport/sections/prompty.tex), zasady w [`CLAUDE.md`](CLAUDE.md).
+[`raport/sections/prompty/`](raport/sections/prompty/) (osobny plik na osobę), zasady w [`CLAUDE.md`](CLAUDE.md).
 
 ## Plan pracy
 
@@ -80,7 +80,7 @@ Rozpisany w [`docs/plan.md`](docs/plan.md).
 ## Użycie GenAI
 
 Projekt powstaje z udziałem modeli generatywnych. Zgodnie z zasadami przedmiotu dokumentujemy
-prompty, iteracje, modele i ustawienia (`raport/sections/prompty.tex`), a treści wygenerowane lub
+prompty, iteracje, modele i ustawienia (`raport/sections/prompty/`), a treści wygenerowane lub
 istotnie przekształcone przez AI oznaczamy w raporcie. Wyniki weryfikuje zespół.
 
 ## Licencja

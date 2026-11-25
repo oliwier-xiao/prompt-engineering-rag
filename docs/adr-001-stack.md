@@ -4,7 +4,7 @@
 - **Data:** 2026-11-25
 - **Decydenci:** Oliwier, Ignacy
 - **Źródła:** research z 2026-11-25 (PyPI, GitHub, Hugging Face, dokumentacja dostawców), raport
-  w `raport/sections/prompty.tex`, wpis 5.
+  w `raport/sections/prompty/oliwier.tex`, wpis O5.
 
 ## Kontekst
 

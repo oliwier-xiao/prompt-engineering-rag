@@ -36,3 +36,6 @@ data/processed/*
 .files/
 .taste-skill/
 .DS_Store
+
+# Skompilowany raport (budowany lokalnie; wersja końcowa dodawana ręcznie z -f)
+raport/main.pdf

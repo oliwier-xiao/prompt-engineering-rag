@@ -7,12 +7,20 @@ wspólnych tylko przez pull request do `main`.
 
 | Właściciel | Gałąź | Pliki (wyłączny zapis) |
 |---|---|---|
-| [Oliwier] | `feat/rag-core` | `src/**`, `prompts/**`, `requirements.txt`, `.env.example`, `experiments/**` |
-| [Ignacy] | `feat/data-eval` | `data/raw/**` (tylko lokalnie), `data/manifest.csv`, `eval/**` |
+| [Oliwier] | `Oliwier-UI` | `src/**`, `prompts/**`, `requirements.txt`, `.env.example`, `experiments/**` |
+| [Ignacy] | `Ignacy-data` | `data/raw/**` (tylko lokalnie), `data/manifest.csv`, `eval/**` |
 | wspólne (PR) | `main` | `docs/**`, `CLAUDE.md`, `README.md`, `raport/**` |
 
-Dziennik promptów (`raport/sections/prompty.tex`): każdy dopisuje własne wpisy, numeracja
-rosnąca; przy konflikcie numerów poprawia ten, kto scala później.
+## Flow pracy
+
+1. Praca na swojej gałęzi (`Oliwier-UI` / `Ignacy-data`), przed startem
+   `git pull --rebase origin main`.
+2. Dziennik promptów: każdy pisze tylko do swojego pliku, `raport/sections/prompty/oliwier.tex`
+   (O1, O2, ...) albo `raport/sections/prompty/ignacy.tex` (I1, I2, ...).
+3. Status zadania w tej tablicy zmienia właściciel w tym samym PR, który zamyka zadanie.
+4. PR do `main` = mały zakres; przed scaleniem kompilacja raportu
+   (`cd raport && latexmk -pdf -outdir=build main.tex`) i ingest na `data/sample/`.
+5. Bezpośrednio na `main` tylko zmiany organizacyjne uzgodnione przez obie osoby.
 
 ## Zadania
 
