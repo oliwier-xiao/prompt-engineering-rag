@@ -72,8 +72,21 @@ uruchamiamy, testujemy i przeglądamy pod kątem bezpieczeństwa.
 
 - `src/` kod RAG, `prompts/` wersje promptów systemowych, `eval/` pytania testowe,
   `experiments/` wyniki bez RAG / z RAG, `raport/` LaTeX, `docs/` wymagania, opis, plan.
-- Stack (UI, LLM, embeddingi, wektorówka) **nie jest jeszcze zatwierdzony**: wybór po porównaniu
-  Gradio / Streamlit / Chainlit. Do tego czasu nie dodawać zależności ani kodu aplikacji.
+- `data/sample/` syntetyczne karty do testu dymnego, `data/manifest.csv` opis zbioru (bez PII).
+
+## Stack (zatwierdzony, `docs/adr-001-stack.md`)
+
+- UI: Gradio 6.x (`<7`). LLM: OpenRouter `:free` przez klienta `openai` (model tylko w `.env`),
+  docelowo Ollama (Bielik); zmiana przez `LLM_BASE_URL`/`LLM_MODEL`, bez zmian w kodzie.
+- Embeddingi: `sdadas/mmlw-retrieval-roberta-large` (prefiks zapytań `zapytanie: `).
+  Baza: ChromaDB w `data/chroma/`. Parser: Docling. Python 3.12 w `.venv` przez `uv`.
+- Uruchomienie: `.venv/bin/python src/ingest.py`, potem `.venv/bin/python src/app.py`.
+- Do LLM trafiają tylko fragmenty z indeksu po usunięciu danych osobowych (ingest). Nowe
+  zależności: przypięta wersja w `requirements.txt`, wpis w ADR przy zmianie warstwy stacku.
+
+## Podział pracy
+
+Przed pracą sprawdź `docs/tasks.md` i trzymaj się zakresu przypisanego właścicielowi.
 
 ## Język
 

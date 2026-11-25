@@ -81,39 +81,3 @@ doslownie jaki temat mamy i wytyczne
 przeorganizowana według szablonu skilla (grupy pakietów, nagłówek i stopka). Reguły LaTeX
 dopisane do \texttt{CLAUDE.md}. Wpis z bibliografii usunięty, \texttt{\textbackslash printbibliography}
 wyłączone do czasu pierwszych zweryfikowanych źródeł.}
-
-\subsection*{Etap planowania: dane źródłowe}
-
-\promptentry{5}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
-  {Plan pobrania kart zajęć Informatyki z krk.prz.edu.pl i pocięcia ich na chunki}
-\begin{lstlisting}
-/superpowers:brainstorming twoim zadaniem jest zaplanowac wektorowa baze danych
-zescrapowana https://krk.prz.edu.pl/karta.pl?mk=354&format=v1_html&C=2026, to
-przykladowy jeden link do przedmiotu, naszym celem jest pobranie wszystkich
-przedmiotow z wydzialu weii
-[zalaczniki: zrzut tabeli podzialu pracy Oliwier/Ignacy; plik message.txt z
-zadaniem dla obszaru Ignacego: audyt data/raw, docs/dane.md, eval/questions.json,
-src/ingest/ po ADR, anonimizacja PII, strategie headers i overlap]
-[kolejne odpowiedzi w rozmowie: "najpierw informatyke zrobmy narazie A)";
-"czy control u i caly kod html nie bylby lepszy?"; wklejony HTML karty mk=354;
-"nie mam nic przeciwko mozesz robic scripts"; "bierz wariant 1"]
-\end{lstlisting}
-\promptresult{Rozpoznanie serwisu (3 zapytania): karty to HTML z 9 stałymi sekcjami, katalog
-\texttt{ek.pl} wymaga logowania CAS, \texttt{robots.txt} ma \texttt{Disallow: /}, sekcja~1
-zawiera nazwiska prowadzących. Decyzje: zakres na start to Informatyka, listę przedmiotów
-zapisuje ręcznie członek zespołu z katalogu po zalogowaniu, kod w \texttt{scripts/} tylko na
-bibliotece standardowej (blokada \texttt{src/} do ADR), dwa kroki: pobieranie i parsowanie
-offline. Projekt w \texttt{docs/superpowers/specs/2026-11-25-karty-informatyka-design.md},
-czeka na zatwierdzenie.}
-
-\promptentry{6}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
-  {Korekta źródła listy przedmiotów po sprawdzeniu katalogu ek.pl}
-\begin{lstlisting}
-[zrzut ekranu: strona ek.pl po zalogowaniu przez CAS, komunikat "Nie masz
-uprawnien do tego zasobu" i lista paneli studenckich]
-\end{lstlisting}
-\promptresult{Porażka wcześniejszego założenia: model przyjął bez sprawdzenia, że za logowaniem
-w \texttt{ek.pl} jest katalog przedmiotów, a to panel pracowników. Po analizie skryptu
-\texttt{plany.js} z karty znaleziono publiczny katalog \texttt{plany.pl} (wydział, kierunek,
-14 planów Informatyki z linkami do kart). Projekt poprawiony: skrypt sam zbiera kody
-\texttt{mk} z planów, bez ręcznego zapisywania listy.}
