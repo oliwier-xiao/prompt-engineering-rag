@@ -61,6 +61,7 @@ i `LLM_MODEL` w `.env`.
 | pypdf | brak ekstrakcji tabel |
 | FAISS, sqlite-vec, LanceDB, Qdrant local | więcej kodu (FAISS) lub brak przewagi przy korpusie ok. 50 dokumentów |
 | `BAAI/bge-m3`, `multilingual-e5-base` | zapasowe; słabsze lub cięższe dla polskiego wyszukiwania |
+| RAG-Anything (HKUDS, MIT, na bazie LightRAG) | indeksowanie przez LLM (ekstrakcja encji, opisy tabel): szacunkowo 1700–2800 wywołań dla korpusu przy limicie 50/dzień i wysyłka pełnej treści dokumentów do LLM; własny magazyn zamiast ChromaDB; cytowanie tylko na poziomie pliku. Przejmujemy pojedyncze pomysły (T-17) |
 
 ## Ryzyka
 

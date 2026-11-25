@@ -41,6 +41,10 @@ Statusy: `todo`, `w toku`, `gotowe`, `zablokowane`.
 | T-11 | [Oliwier] | Raport: architektura, strategia promptowania, techniki | `raport/sections/**` (PR) | todo |
 | T-12 | [Ignacy] | Raport: dane, ewaluacja, analiza porażek | `raport/sections/**` (PR) | todo |
 | T-13 | wspólne | Raport: zagrożenia, wnioski, podział pracy; prezentacja z demo | `raport/sections/**` (PR) | todo |
+| T-14 | [Oliwier] | UI: panel źródeł domyślnie zwinięty, czytelny komunikat przy 429, wyższe okno czatu | `src/app.py` | todo |
+| T-15 | [Oliwier] | Pytania agregujące (np. ,,który przedmiot ma najwięcej godzin''): top_k=5 nie obejmie 51 kart; metadane ECTS/godzin z ingestu albo opis jako ograniczenie | `src/**` | todo |
+| T-16 | [Oliwier] | Prompt v2: sprzeczność reguł 2 i 3 (tryb Bez RAG raz odmawia, raz odpowiada ogólnie), próg podobieństwa w logu | `prompts/v2.md`, `src/**` | todo |
+| T-17 | [Oliwier] | Z RAG-Anything (tylko pomysły, bez zależności): kontekst sąsiednich chunków do tabel | `src/ingest.py` | todo |
 
 ## Kontrakt danych: `data/raw/`
 

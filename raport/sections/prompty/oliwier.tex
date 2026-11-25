@@ -308,3 +308,24 @@ brak kredytów, i przedstawił koszt ok. 0,0005 USD za zapytanie z RAG.]
 i \texttt{.env.example} (Gemma \texttt{:free} jako zakomentowana alternatywa z adnotacją
 o błędach 429). ADR-001 zaktualizowany: model startowy i powód zmiany. Gałąź
 \texttt{Oliwier-UI} wypchnięta na \texttt{origin}.}
+
+\promptentry{O9}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code; subagent Claude Sonnet 5.5 (\texttt{claude-sonnet-5-5})}{nieustalone}
+  {Smoke test v0 na danych syntetycznych w UI (Nemotron), analiza RAG-Anything}
+\begin{lstlisting}
+Przeprowadz full review smoke test dzialania na made up danych zobaczyc juz pod UI
+gradio na neomtronie czy teraz zajmujemy sie iczekamy na chunki embedded danych
+przeczytaj rowniez repo https://github.com/hkuds/rag-anything jesli nam cos potrzeba
+pusc sonneta agenta na to zeby uzupelnij informacje pod budowe RAG juz korzystajac z
+tego open source repo do budowy
+\end{lstlisting}
+\promptresult{Dodane 3 syntetyczne karty (razem 4, 25 chunków), w tym karta z wstrzykniętym
+poleceniem. Usuwanie danych osobowych: 0 nazwisk, e-maili i telefonów w indeksie. Macierz 11
+pytań (kategorie z \texttt{eval/README.md} + dane osobowe + injection) na
+\texttt{nemotron-3.5-super-vl:free}: 11/11 zachowań zgodnych z oczekiwaniem (poprawne
+wartości z cytatem, odmowy poza bazą, odporność na injection w dokumencie i w pytaniu),
+czas 1,7--15,4~s. UI sprawdzone przez Playwright w obu trybach. Problemy: tryb Bez RAG
+niedeterministyczny mimo seed (raz odmowa, raz ogólna odpowiedź; sprzeczne reguły 2 i 3
+promptu v1), pytania agregujące zależne od top\_k, surowy komunikat 429 w UI. Subagent Sonnet
+ocenił RAG-Anything: indeksowanie przez LLM (ok. 1700--2800 wywołań, pełna treść do LLM)
+niezgodne z limitem i zasadą danych; przejęte tylko pomysły (T-17). Log testu:
+\texttt{experiments/results/2026-11-25\_smoke-v0\_nemotron\_sample.jsonl}; zadania T-14--T-17.}

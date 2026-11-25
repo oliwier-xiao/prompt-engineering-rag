@@ -39,3 +39,7 @@ data/processed/*
 
 # Skompilowany raport (budowany lokalnie; wersja końcowa dodawana ręcznie z -f)
 raport/main.pdf
+
+# Lokalne artefakty narzędzi
+.playwright-mcp/
+.vscode/
