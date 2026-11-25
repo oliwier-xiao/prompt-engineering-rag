@@ -1,0 +1,8 @@
+# Python 3.12 (Docling wymaga <3.14). Instalacja:
+#   uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r requirements.txt
+gradio==6.32.0
+chromadb==1.5.9
+sentence-transformers==5.7.0
+docling==2.152.0
+openai==2.54.0
+python-dotenv==1.2.4
