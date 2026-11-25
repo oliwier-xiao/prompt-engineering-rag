@@ -45,7 +45,7 @@ Pełny opis pomysłu i decyzji: [`docs/projekt.md`](docs/projekt.md).
 │   └── skills/latex-engineer/   skill do pracy z LaTeX-em (dla całego zespołu)
 ├── docs/                 wymagania, opis projektu, decyzje (ADR), plan pracy
 ├── data/
-│   ├── raw/              karty zajęć HTML z krk.prz.edu.pl (poza gitem, dane osobowe)
+│   ├── raw/              karty zajęć HTML z krk.prz.edu.pl (51 plików)
 │   ├── sample/           syntetyczne karty do testu dymnego
 │   ├── manifest.csv      opis zbioru: plik, kod mk, przedmiot, semestr, ECTS, URL, SHA-256
 │   └── processed/        wynik ekstrakcji i chunkingu (poza gitem)

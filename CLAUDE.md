@@ -72,7 +72,8 @@ uruchamiamy, testujemy i przeglądamy pod kątem bezpieczeństwa.
 ## Reguły danych
 
 - Nie wysyłać do zewnętrznych usług danych osobowych, poufnych ani objętych ograniczeniami
-  licencyjnymi. Surowe sylabusy w `data/raw/` są poza gitem.
+  licencyjnymi. Karty w `data/raw/` są w repo (publiczne strony uczelni, decyzja zespołu), ale
+  zawierają nazwiska prowadzących: do LLM trafiają tylko chunki po anonimizacji w ingeście.
 - Cytowania w `raport/bib/zrodla.bib` wyłącznie zweryfikowane. Niepewne oznaczać
   `% TODO: verify`.
 

@@ -1,0 +1,2 @@
+# Karty zajec przechowywane bajt w bajt (sumy SHA-256 w data/manifest.csv)
+data/raw/** -text

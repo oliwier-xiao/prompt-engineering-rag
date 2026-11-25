@@ -8,7 +8,7 @@ wspólnych tylko przez pull request do `main`.
 | Właściciel | Gałąź | Pliki (wyłączny zapis) |
 |---|---|---|
 | [Oliwier] | `feat/rag-core` | `src/**`, `prompts/**`, `requirements.txt`, `.env.example`, `experiments/**` |
-| [Ignacy] | `feat/data-eval` | `data/raw/**` (tylko lokalnie), `data/manifest.csv`, `scripts/**`, `eval/**` |
+| [Ignacy] | `feat/data-eval` | `data/raw/**`, `data/manifest.csv`, `scripts/**`, `eval/**` |
 | wspólne (PR) | `main` | `docs/**`, `CLAUDE.md`, `README.md`, `raport/**` |
 
 Dziennik promptów: każda osoba pisze tylko we własnym pliku,
@@ -67,8 +67,9 @@ python scripts/fetch_cards.py            # cały plan; --limit N dla próby
 file,mk,course_name,semester,ects,source_url,retrieved_at,sha256
 ```
 
-**Dane osobowe.** Pliki w `data/raw/` zostają lokalnie (katalog w `.gitignore`), nie trafiają
-do gita ani do zewnętrznych usług w postaci surowej. Ingest (`src/ingest.py`) przed
+**Dane osobowe.** Karty w `data/raw/` są w repozytorium (decyzja zespołu 2026-11-25: pokazujemy
+zbiór, na którym pracowaliśmy). To kopie publicznych stron uczelni, ale zawierają imiona i
+nazwiska koordynatorów i prowadzących; nie wysyłamy ich w postaci surowej do zewnętrznych usług. Ingest (`src/ingest.py`) przed
 indeksowaniem usuwa: blok od „Imię i nazwisko koordynatora” do następnego nagłówka sekcji
 (koordynator i prowadzący w semestrach), adresy e-mail, numery telefonów. Do LLM trafiają
 tylko fragmenty z indeksu. Po każdej zmianie zbioru: T-04 (ręczny przegląd próbki).

@@ -83,9 +83,22 @@ Ignacego, zasady dziennika), \texttt{docs/plan.md}, \texttt{CLAUDE.md}, README, 
 \begin{lstlisting}
 zpulluj to do maina i rozwiaz konflikty
 \end{lstlisting}
-\promptresult{Dokończone scalanie \texttt{origin/main} (ADR-001, prototyp v0) z gałęzią
-\texttt{Ignacy-data}: konflikt w dzienniku rozwiązany wcześniej przez podział na pliki osób,
-pozostałe pliki scalone automatycznie. Gałąź przeniesiona na \texttt{main} (fast-forward) i
-wypchnięta. Wcześniej dodano wygenerowany prompt (prompt-master) do uruchomienia T-04; nie
-zmieniał repozytorium.}
+\promptresult{Scalenie \texttt{origin/main} z \texttt{Ignacy-data} było już zacommitowane
+ręcznie (konflikt dziennika rozwiązany podziałem na pliki osób); brak otwartych konfliktów.
+\texttt{main} przesunięty na \texttt{Ignacy-data} jako fast-forward i wypchnięty. Wcześniejszy
+prompt (prompt-master, uruchomienie T-04) nie zmieniał repozytorium.}
+
+\promptentry{I7}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
+  {Dodanie surowych kart z data/raw do repozytorium}
+\begin{lstlisting}
+wez jeszcze data raw dodaj
+dodaj , pokazemy na czym pracowalismy
+\end{lstlisting}
+\promptresult{Model odradzał dodanie kart (imiona i nazwiska prowadzących w publicznym
+repozytorium, wcześniejsza reguła ,,poza gitem'') i proponował kopie zanonimizowane; zespół
+zdecydował o dodaniu oryginałów, by pokazać zbiór roboczy. Usunięto wykluczenie
+\texttt{data/raw/} z \texttt{.gitignore}, zaktualizowano reguły w \texttt{CLAUDE.md},
+\texttt{docs/tasks.md}, README i projekcie; 51 kart dodanych do commita. Ryzyko do opisania w
+sekcji zagrożeń raportu. Push na GitHub zablokowany przez uprawnienia narzędzia, wykonuje
+użytkownik.}
 

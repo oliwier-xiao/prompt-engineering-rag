@@ -11,7 +11,7 @@ kontraktem w `docs/tasks.md`: Informatyka, I stopień, stacjonarne, blok tematyc
 
 ## Cele
 
-- Pobrać 51 kart z publicznego planu studiów do `data/raw/` (poza gitem), z nazwami
+- Pobrać 51 kart z publicznego planu studiów do `data/raw/` (w repo), z nazwami
   `inf1-ai_<mk>_<slug>.html`.
 - Utworzyć `data/manifest.csv` (w gicie, bez danych osobowych):
   `file,mk,course_name,semester,ects,source_url,retrieved_at,sha256`.
