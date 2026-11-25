@@ -8,11 +8,12 @@ wspólnych tylko przez pull request do `main`.
 | Właściciel | Gałąź | Pliki (wyłączny zapis) |
 |---|---|---|
 | [Oliwier] | `feat/rag-core` | `src/**`, `prompts/**`, `requirements.txt`, `.env.example`, `experiments/**` |
-| [Ignacy] | `feat/data-eval` | `data/raw/**` (tylko lokalnie), `data/manifest.csv`, `eval/**` |
+| [Ignacy] | `feat/data-eval` | `data/raw/**` (tylko lokalnie), `data/manifest.csv`, `scripts/**`, `eval/**` |
 | wspólne (PR) | `main` | `docs/**`, `CLAUDE.md`, `README.md`, `raport/**` |
 
-Dziennik promptów (`raport/sections/prompty.tex`): każdy dopisuje własne wpisy, numeracja
-rosnąca; przy konflikcie numerów poprawia ten, kto scala później.
+Dziennik promptów: każda osoba pisze tylko we własnym pliku,
+`raport/sections/prompty-oliwier.tex` (wpisy O1, O2, ...) albo
+`raport/sections/prompty-ignacy.tex` (wpisy I1, I2, ...). Wspólny `prompty.tex` tylko je dołącza.
 
 ## Zadania
 
@@ -22,7 +23,7 @@ Statusy: `todo`, `w toku`, `gotowe`, `zablokowane`.
 |---|---|---|---|---|
 | T-01 | [Oliwier] | Prototyp v0: ingest, chunking, indeks Chroma, tryby bez RAG / z RAG, UI Gradio | `src/**`, `requirements.txt`, `.env.example` | gotowe; wywołanie LLM do sprawdzenia po dodaniu klucza do `.env` |
 | T-02 | [Oliwier] | Prompt v1 (bazowy) | `prompts/v1.md` | gotowe |
-| T-03 | [Ignacy] | Pobranie 51 kart zajęć bloku AI zgodnie z kontraktem niżej, `data/manifest.csv` | `data/raw/**`, `data/manifest.csv` | w toku |
+| T-03 | [Ignacy] | Pobranie 51 kart zajęć bloku AI zgodnie z kontraktem niżej, `data/manifest.csv` | `data/raw/**`, `data/manifest.csv`, `scripts/fetch_cards.py` | gotowe (2026-11-25: 51 kart, 0 błędów) |
 | T-04 | [Ignacy] | Kontrola danych osobowych: ingest na pełnym zbiorze, ręczny przegląd 5 losowych kart w indeksie | raport w PR | todo |
 | T-05 | [Ignacy] | Zestaw `eval/questions.csv`: min. po 5 pytań w każdej z 5 kategorii z `eval/README.md` | `eval/**` | todo |
 | T-06 | [Oliwier] | Przejście na Ollama: Bielik 11B (zapas 4.5B), aktualizacja `.env.example` i ADR | `.env.example`, `docs/adr-001-stack.md` (PR) | todo |
@@ -41,9 +42,18 @@ inteligencja, cykl 2026/2027. Lista kart: plan studiów
 `https://krk.prz.edu.pl/plany.pl?lng=PL&W=E&K=F&KW=&TK=html&S=2424&P=&C=&erasmus=&O=T`
 (51 kart, parametr `mk` = kod zajęć).
 
-**Pobieranie.** `krk.prz.edu.pl/robots.txt` zawiera `Disallow: /`, więc bez crawlera
-i bez skryptów masowo pobierających strony. Karty zapisujemy ręcznie z przeglądarki
-(„Zapisz stronę jako”, tylko HTML) albo po pisemnej zgodzie wydziału.
+**Pobieranie (uzgodnione w zespole 2026-11-25).** Skrypt `scripts/fetch_cards.py`
+(biblioteka standardowa Pythona): pobiera publiczny plan bloku AI, wyciąga 51 linków do kart
+i pobiera każdą kartę jeden raz, co 2,5 s (łącznie 52 zapytania). Już pobrane pliki pomija,
+więc ponowne uruchomienie nie odpytuje serwera o te same karty. `krk.prz.edu.pl/robots.txt`
+zawiera `Disallow: /`: świadomie pobieramy tylko tę listę stron publicznych, jednorazowo i
+powoli, bez crawlera i bez stron za logowaniem. Ryzyko opisane w ADR-001 (ryzyko 6) i w
+raporcie. Pozycje planu bez własnej karty (Język obcy, Zajęcia wybieralne I/II, Przedmiot
+humanistyczno-społeczny I/II) prowadzą do innych planów i nie są pobierane.
+
+```
+python scripts/fetch_cards.py            # cały plan; --limit N dla próby
+```
 
 **Format.** Jeden plik = jedna karta zajęć. Preferowany oryginalny HTML
 (`format=v1_html`). Dopuszczalne PDF z warstwą tekstową i DOCX. Bez skanów.

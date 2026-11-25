@@ -6,10 +6,17 @@ Pełny kontekst: `README.md`, `docs/projekt.md`, `docs/wymagania.md`, `docs/plan
 ## Dziennik promptów (OBOWIĄZKOWE)
 
 Przedmiot wymaga dokumentowania promptów, iteracji, modeli i ustawień. Dziennik prowadzimy w
-LaTeX-u od razu, nie na koniec: **`raport/sections/prompty.tex`**.
+LaTeX-u od razu, nie na koniec, **osobno dla każdej osoby**:
+
+- Oliwier: **`raport/sections/prompty-oliwier.tex`**, wpisy `O1`, `O2`, ...
+- Ignacy: **`raport/sections/prompty-ignacy.tex`**, wpisy `I1`, `I2`, ...
+
+Kto pracuje, ustal z `git config user.name` (`Oliwier Data` albo `IgnacyJ`); w razie wątpliwości
+zapytaj. Pisz tylko we własnym pliku. `raport/sections/prompty.tex` zawiera wstęp i dołącza oba
+pliki, nie dopisuj do niego wpisów.
 
 Po każdym prompcie użytkownika, który zmienia coś w projekcie (kod, dokumenty, dane, raport,
-decyzje), dopisz wpis na końcu tego pliku, w tej samej turze, przed zakończeniem odpowiedzi.
+decyzje), dopisz wpis na końcu swojego pliku, w tej samej turze, przed zakończeniem odpowiedzi.
 Pomijaj tylko czyste pytania bez skutku w repo (np. „co robi ta funkcja?”).
 
 Format wpisu (makra z `raport/preamble.tex`):
@@ -24,7 +31,7 @@ Treść promptu (dosłownie albo z oznaczonym skrótem [...]).
 
 Zasady:
 
-- `N` rośnie o 1; sprawdź ostatni numer w pliku.
+- `N` to prefiks osoby i numer rosnący o 1 (`I5`, `O6`); sprawdź ostatni numer w swoim pliku.
 - **Model i effort** bierz z bieżącej sesji (`/model`, `/effort`; nagłówek środowiska podaje
   nazwę i id modelu). Nie zgaduj: jeśli nie znasz wartości, wpisz `nieustalone`.
 - Prompt wklejaj w `lstlisting` (bezpieczny dla znaków specjalnych LaTeX-a). Zrzuty ekranu i
@@ -44,7 +51,8 @@ format raportu:
 - `raport/main.tex` zawiera tylko `\input{preamble}` i `\input{sections/...}`. Pakiety i makra są
   w `raport/preamble.tex`, pogrupowane funkcyjnie (język, typografia, grafika, kod, bibliografia).
 - Jedna sekcja = jeden plik w `raport/sections/`, numerowany (`01-...`). Dziennik promptów w
-  `sections/prompty.tex` (dodatek).
+  `sections/prompty.tex` (dodatek), wpisy w `sections/prompty-oliwier.tex` i
+  `sections/prompty-ignacy.tex`.
 - Tabele przez `booktabs` (bez pionowych linii). Polskie cudzysłowy `,,tekst''`, twarde spacje po
   jednoliterowych spójnikach (`a~to`). Kod i prompty w `lstlisting` (styl `prompt`).
 - Styl inżynierski, bez „AI slopu”: konkret zamiast przymiotników, strona czynna, liczby zamiast
@@ -73,6 +81,8 @@ uruchamiamy, testujemy i przeglądamy pod kątem bezpieczeństwa.
 - `src/` kod RAG, `prompts/` wersje promptów systemowych, `eval/` pytania testowe,
   `experiments/` wyniki bez RAG / z RAG, `raport/` LaTeX, `docs/` wymagania, opis, plan.
 - `data/sample/` syntetyczne karty do testu dymnego, `data/manifest.csv` opis zbioru (bez PII).
+- `scripts/fetch_cards.py` pobiera karty z publicznego planu do `data/raw/` i tworzy manifest
+  (kontrakt i zasady pobierania w `docs/tasks.md`).
 
 ## Stack (zatwierdzony, `docs/adr-001-stack.md`)
 

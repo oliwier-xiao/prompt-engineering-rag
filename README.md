@@ -7,8 +7,9 @@ Asystent odpowiada na pytania studentów o zasady zaliczenia **wyłącznie na po
 sylabusów i regulaminów**, cytuje dokument źródłowy i odmawia odpowiedzi, gdy informacji w
 dokumentach nie ma.
 
-> Status: **inicjalizacja**. Wybrany temat, zakres i plan pracy. Stack (UI, model, wektorówka)
-> zostanie zatwierdzony w następnym etapie po porównaniu Gradio, Streamlit i Chainlit.
+> Status: **prototypowanie**. Stack zatwierdzony ([`docs/adr-001-stack.md`](docs/adr-001-stack.md)),
+> prototyp v0 w `src/`, zbiór danych: 51 kart zajęć (Informatyka, I st., blok AI) pobranych
+> skryptem `scripts/fetch_cards.py`. Podział zadań: [`docs/tasks.md`](docs/tasks.md).
 
 ## Cel
 
@@ -44,16 +45,19 @@ Pełny opis pomysłu i decyzji: [`docs/projekt.md`](docs/projekt.md).
 │   └── skills/latex-engineer/   skill do pracy z LaTeX-em (dla całego zespołu)
 ├── docs/                 wymagania, opis projektu, decyzje (ADR), plan pracy
 ├── data/
-│   ├── raw/              źródłowe sylabusy (poza gitem, patrz licencje)
+│   ├── raw/              karty zajęć HTML z krk.prz.edu.pl (poza gitem, dane osobowe)
+│   ├── sample/           syntetyczne karty do testu dymnego
+│   ├── manifest.csv      opis zbioru: plik, kod mk, przedmiot, semestr, ECTS, URL, SHA-256
 │   └── processed/        wynik ekstrakcji i chunkingu (poza gitem)
-├── src/                  kod aplikacji RAG (po zatwierdzeniu stacku)
+├── scripts/              fetch_cards.py: pobranie kart z publicznego planu studiów
+├── src/                  kod aplikacji RAG (ingest, indeks, generowanie, UI Gradio)
 ├── prompts/              wersje promptów systemowych (v1, v2, v3 ...) jako pliki
 ├── eval/                 zestaw pytań testowych (z odpowiedzią i pułapki odmowy)
 ├── experiments/          logi uruchomień i wyniki porównań (bez RAG / z RAG)
 └── raport/               raport końcowy w LaTeX
     ├── main.tex
     ├── preamble.tex
-    ├── sections/         rozdziały raportu + prompty.tex (dziennik promptów)
+    ├── sections/         rozdziały raportu + dziennik promptów (prompty-oliwier.tex, prompty-ignacy.tex)
     ├── figures/
     └── bib/
 ```
@@ -69,8 +73,9 @@ latexmk -C -outdir=build                # sprzątanie
 Wymaga TeX Live z pakietami `babel-polish`, `listings`, `booktabs`, `biblatex`.
 Pliki `.tex` powstają według skilla `latex-engineer` (`.claude/skills/latex-engineer/`), który
 Claude Code ładuje automatycznie po sklonowaniu repo.
-Dziennik promptów użytych z modelem (z modelem i effortem) prowadzimy na bieżąco w
-[`raport/sections/prompty.tex`](raport/sections/prompty.tex), zasady w [`CLAUDE.md`](CLAUDE.md).
+Dziennik promptów użytych z modelem (z modelem i effortem) prowadzimy na bieżąco, każda osoba
+w swoim pliku: [`prompty-oliwier.tex`](raport/sections/prompty-oliwier.tex) i
+[`prompty-ignacy.tex`](raport/sections/prompty-ignacy.tex); zasady w [`CLAUDE.md`](CLAUDE.md).
 
 ## Plan pracy
 
@@ -80,7 +85,7 @@ Rozpisany w [`docs/plan.md`](docs/plan.md).
 ## Użycie GenAI
 
 Projekt powstaje z udziałem modeli generatywnych. Zgodnie z zasadami przedmiotu dokumentujemy
-prompty, iteracje, modele i ustawienia (`raport/sections/prompty.tex`), a treści wygenerowane lub
+prompty, iteracje, modele i ustawienia (`raport/sections/prompty-*.tex`), a treści wygenerowane lub
 istotnie przekształcone przez AI oznaczamy w raporcie. Wyniki weryfikuje zespół.
 
 ## Licencja

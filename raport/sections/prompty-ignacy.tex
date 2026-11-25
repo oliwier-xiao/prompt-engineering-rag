@@ -1,0 +1,80 @@
+% Dziennik promptów: Ignacy Janus. Wpisy I1, I2, ... (zasady w CLAUDE.md).
+\subsection{Prompty: Ignacy Janus}
+\label{app:prompty-ignacy}
+
+\subsubsection*{Etap planowania: dane źródłowe}
+
+\promptentry{I1}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
+  {Plan pobrania kart zajęć Informatyki z krk.prz.edu.pl i pocięcia ich na chunki}
+\begin{lstlisting}
+/superpowers:brainstorming twoim zadaniem jest zaplanowac wektorowa baze danych
+zescrapowana https://krk.prz.edu.pl/karta.pl?mk=354&format=v1_html&C=2026, to
+przykladowy jeden link do przedmiotu, naszym celem jest pobranie wszystkich
+przedmiotow z wydzialu weii
+[zalaczniki: zrzut tabeli podzialu pracy Oliwier/Ignacy; plik message.txt z
+zadaniem dla obszaru Ignacego: audyt data/raw, docs/dane.md, eval/questions.json,
+src/ingest/ po ADR, anonimizacja PII, strategie headers i overlap]
+[kolejne odpowiedzi w rozmowie: "najpierw informatyke zrobmy narazie A)";
+"czy control u i caly kod html nie bylby lepszy?"; wklejony HTML karty mk=354;
+"nie mam nic przeciwko mozesz robic scripts"; "bierz wariant 1"]
+\end{lstlisting}
+\promptresult{Rozpoznanie serwisu (3 zapytania): karty to HTML z 9 stałymi sekcjami, katalog
+\texttt{ek.pl} wymaga logowania CAS, \texttt{robots.txt} ma \texttt{Disallow: /}, sekcja~1
+zawiera nazwiska prowadzących. Decyzje: zakres na start to Informatyka, listę przedmiotów
+zapisuje ręcznie członek zespołu z katalogu po zalogowaniu, kod w \texttt{scripts/} tylko na
+bibliotece standardowej (blokada \texttt{src/} do ADR), dwa kroki: pobieranie i parsowanie
+offline. Projekt w \texttt{docs/superpowers/specs/2026-11-25-karty-informatyka-design.md},
+czeka na zatwierdzenie.}
+
+\promptentry{I2}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
+  {Korekta źródła listy przedmiotów po sprawdzeniu katalogu ek.pl}
+\begin{lstlisting}
+[zrzut ekranu: strona ek.pl po zalogowaniu przez CAS, komunikat "Nie masz
+uprawnien do tego zasobu" i lista paneli studenckich]
+\end{lstlisting}
+\promptresult{Porażka wcześniejszego założenia: model przyjął bez sprawdzenia, że za logowaniem
+w \texttt{ek.pl} jest katalog przedmiotów, a to panel pracowników. Po analizie skryptu
+\texttt{plany.js} z karty znaleziono publiczny katalog \texttt{plany.pl} (wydział, kierunek,
+14 planów Informatyki z linkami do kart). Projekt poprawiony: skrypt sam zbiera kody
+\texttt{mk} z planów, bez ręcznego zapisywania listy.}
+
+\promptentry{I3}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
+  {Prototyp skryptu pobierającego karty z planu bloku AI}
+\begin{lstlisting}
+wyprobujmy skrypt do fetchowania
+\end{lstlisting}
+\promptresult{Prototyp \texttt{scripts/fetch\_cards.py} (biblioteka standardowa): pobiera publiczny
+plan \texttt{S=2424} (51 kart), zapisuje karty jako \texttt{inf1-ai\_<mk>\_<slug>.html} w
+\texttt{data/raw/} i tworzy \texttt{data/manifest.csv} według kontraktu z \texttt{docs/tasks.md}.
+Próba na 3 kartach z odstępem 2,5~s: 3 pobrane, 0 błędów. Karta z pustym parametrem
+\texttt{C} jest identyczna (SHA-256) z wersją \texttt{C=2026}. Uwaga: ADR-001 i
+\texttt{docs/tasks.md} wykluczają skrypty pobierające ze względu na \texttt{robots.txt}
+(\texttt{Disallow: /}), więc pełne pobranie wymaga zgody zespołu.}
+
+\promptentry{I4}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
+  {Pełne pobranie kart bloku AI i naprawa dziennika po scaleniu z main}
+\begin{lstlisting}
+to zrob tak z wszystkimi przedmiotami i napraw prompt tex
+\end{lstlisting}
+\promptresult{Pobrano pozostałe 48 kart (łącznie 51, 0 błędów, odstęp 2,5~s), każda zweryfikowana
+jako karta zajęć Informatyki; \texttt{data/manifest.csv} ma 51 wierszy. Pominięte pozycje planu
+bez własnej karty (Język obcy, Zajęcia wybieralne I/II, Przedmiot humanistyczno-społeczny I/II).
+Seminarium dyplomowe i Wychowanie fizyczne występują w dwóch semestrach (w manifeście
+\texttt{6;7} i \texttt{1;2}). Naprawa dziennika: przy rozwiązywaniu konfliktu scalania z
+\texttt{main} wypadły wpis~5 Oliwiera oraz dwa wpisy z tej sesji; odtworzono je z historii gita
+i przenumerowano; później dziennik podzielono na pliki osób (wpisy O i~I).}
+
+\promptentry{I5}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
+  {Skrypt jako wersja końcowa, aktualizacja dokumentacji, podział dziennika na osoby}
+\begin{lstlisting}
+ale my juz mamy html ze skryptu dogadalismy sie i to jest finalna werscja,
+zaktualizuj wszystko i podziel prompty tex na prompty ignacy i prompty oliwier
+\end{lstlisting}
+\promptresult{Dziennik podzielony na \texttt{prompty-oliwier.tex} (O1--O5) i
+\texttt{prompty-ignacy.tex} (I1--I5); \texttt{prompty.tex} zawiera wstęp i oba pliki, makro
+\texttt{\textbackslash promptentry} o poziom niżej (\texttt{subsubsection}). Autorstwo wpisów
+przypisane według autorów commitów. Zaktualizowane: ADR-001 (ryzyko 6: pobieranie skryptem za
+zgodą zespołu), \texttt{docs/tasks.md} (pobieranie, T-03 gotowe, \texttt{scripts/**} w zakresie
+Ignacego, zasady dziennika), \texttt{docs/plan.md}, \texttt{CLAUDE.md}, README, projekt w
+\texttt{docs/superpowers/specs/} (stan końcowy, uwagi dla ingestu).}
+
