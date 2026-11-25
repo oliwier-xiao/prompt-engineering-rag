@@ -4,7 +4,7 @@
 
 Temat jest wybrany: **Uczelniany Asystent Sylabusów i Zasad Zaliczeń**. Wybór poprzedziła burza
 mózgów w rozmowie z Gemini (10 kandydatów), udokumentowana w dzienniku promptów
-(`raport/sections/prompty.tex`, wpisy 1 i 2). Pozostałe warianty rozważane na etapie wyboru
+(`raport/sections/prompty-oliwier.tex`, wpisy O1 i O2). Pozostałe warianty rozważane na etapie wyboru
 (zapis w skrócie):
 
 | # | Temat | Kluczowy atut RAG |

@@ -2,16 +2,15 @@
 \label{app:prompty}
 
 Rejestr promptów wysyłanych do modeli podczas tworzenia projektu (kod, dokumentacja, raport).
-Wymóg przedmiotu: dokumentować najważniejsze prompty, iteracje, modele i ustawienia. Wpisy
-dodajemy chronologicznie na bieżąco (zasady w \texttt{CLAUDE.md}). Treści wygenerowane przez
+Wymóg przedmiotu: dokumentować najważniejsze prompty, iteracje, modele i ustawienia. Każda
+osoba prowadzi własny plik z~wpisami numerowanymi chronologicznie (Oliwier: O1, O2, \ldots;
+Ignacy: I1, I2, \ldots). Zasady w~\texttt{CLAUDE.md}. Treści wygenerowane przez
 AI są oznaczone w raporcie, a wyniki weryfikuje zespół.
 
 Nie obejmuje promptów systemowych samego asystenta RAG: te są w \texttt{prompts/} i opisane w
 sekcji o strategii promptowania.
 
-Każdy członek zespołu prowadzi własny plik w \texttt{sections/prompty/} i własną numerację
-(O1, O2, \ldots{} oraz I1, I2, \ldots), dzięki czemu równoległe gałęzie nie powodują konfliktów
-przy scalaniu. Ten plik tylko dołącza oba dzienniki.
+% ---------------------------------------------------------------- wpisy
 
-\input{sections/prompty/oliwier}
-\input{sections/prompty/ignacy}
+\input{sections/prompty-oliwier}
+\input{sections/prompty-ignacy}

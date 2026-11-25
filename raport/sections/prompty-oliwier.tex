@@ -1,7 +1,5 @@
-% Dziennik promptów: Oliwier. Edytuje tylko Oliwier. Numeracja O1, O2, ...
-% Nowy wpis dopisuj na końcu pliku (format: CLAUDE.md, makra: preamble.tex).
-
-\subsection{Oliwier}
+% Dziennik promptów: Oliwier Data. Wpisy O1, O2, ... (zasady w CLAUDE.md).
+\subsection{Prompty: Oliwier Data}
 \label{app:prompty-oliwier}
 
 \subsubsection*{Etap wyboru tematu}
@@ -345,3 +343,25 @@ po 429, wyniki JSONL i arkusz CSV z pustymi kolumnami do oceny ręcznej;
 tryb Z RAG 8/8 zgodnie z oczekiwaniem. Przykład do analizy: bez RAG model podał
 ,,najczęściej 4 lub 5 ECTS'' dla przedmiotu, który w karcie ma 3. Błąd w trakcie: kropka
 w nazwie modelu ucinała nazwę pliku wyników (\texttt{Path.with\_suffix}); poprawione.}
+
+\promptentry{O11}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{nieustalone}
+  {Scalenie zmian Ignacego z main z gałęzią Oliwier-UI i udostępnienie prototypu na main}
+\begin{lstlisting}
+wez w miedzy czasie zobacz co od ignacego zostalo dodane na maina chyba bedzie trzeba
+zaniedlugo moje rzeczy dorzucic zeby widzial on juz dodal sciagniete htmlowe dane itd
+wiec dorzucic mu trzeba juz prototyp
+
+[Dopisek w trakcie:] dobra ale ty nie musisz tego robic on sie zajmuje chce zebys zlaczyl
+calosc zeby dolaczyc mu moje commity z brancha zeby juz sobie sciagnal
+\end{lstlisting}
+\promptresult{\texttt{origin/main} scalony do \texttt{Oliwier-UI} (konflikty w 7 plikach).
+Obie strony niezależnie rozdzieliły dziennik promptów; przyjęty układ z \texttt{main}
+(\texttt{prompty-oliwier.tex}, \texttt{prompty-ignacy.tex}), wpisy O6--O10 przeniesione
+bez zmian treści, katalog \texttt{sections/prompty/} z wpisu O6 usunięty. W
+\texttt{docs/tasks.md} połączone: zakres Ignacego ze \texttt{scripts/**}, sekcja ,,Flow
+pracy'', zadania T-14--T-17. Sprawdzenie lokalne na 51 kartach: ingest 1026 chunków w 37~s,
+0 ze 183 wpisów koordynatorów i prowadzących w indeksie, 0 e-maili. Uwaga dla Ignacego:
+sekcja ,,Treści zajęć powiązane są z prowadzonymi badaniami naukowymi'' (listy publikacji
+pracowników) to 205 chunków (20\% indeksu) z nazwiskami autorów; zmianę w ingeście
+cofnięto na prośbę użytkownika (dane prowadzi Ignacy). Następnie \texttt{main} przewinięty
+do \texttt{Oliwier-UI}.}

@@ -4,7 +4,7 @@
 - **Data:** 2026-11-25
 - **Decydenci:** Oliwier, Ignacy
 - **Źródła:** research z 2026-11-25 (PyPI, GitHub, Hugging Face, dokumentacja dostawców), raport
-  w `raport/sections/prompty/oliwier.tex`, wpis O5.
+  w `raport/sections/prompty-oliwier.tex`, wpis O5.
 
 ## Kontekst
 
@@ -83,7 +83,11 @@ i `LLM_MODEL` w `.env`.
    w `experiments/results/runs.jsonl`: model, `base_url`, temperaturę, seed, `top_k`, model
    embeddingów, wersję promptu, commit git i źródła.
 5. **Limit 512 tokenów embeddingów.** Chunki do ok. 1200 znaków.
-6. **`robots.txt` serwisu `krk.prz.edu.pl` ma `Disallow: /`.** Automatyczne pobieranie jest
-   wykluczone; karty pobieramy ręcznie (51 plików) albo po uzyskaniu zgody wydziału.
+6. **`robots.txt` serwisu `krk.prz.edu.pl` ma `Disallow: /`.** Decyzja zespołu
+   (2026-11-25): karty pobiera `scripts/fetch_cards.py`, wyłącznie z listy w publicznym planie
+   bloku AI (52 zapytania: plan i 51 kart), jednorazowo, co 2,5 s, z pominięciem już
+   pobranych plików, bez stron za logowaniem. Obciążenie serwera jest takie jak przy ręcznym
+   zapisaniu tych samych stron. Zbiór pobrano 2026-11-25 (51 kart, 0 błędów); sumy SHA-256 w
+   `data/manifest.csv`. Odstępstwo od `robots.txt` opisujemy w raporcie (zagrożenia).
 7. **Sprzęt.** RTX 4050 6 GB: Bielik 11B Q4_K_M (6,7 GB) nie zmieści się w całości w VRAM
    [niezweryfikowane: szybkość nie mierzona]. Sprzęt drugiej osoby nieznany.

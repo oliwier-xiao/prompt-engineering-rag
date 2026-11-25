@@ -25,7 +25,8 @@ Etapy zgodne z przebiegiem zajęć. Statusy aktualizujemy na bieżąco.
   publiczne karty po usunięciu danych osobowych; docelowo Ollama (Bielik), zadanie T-06
 - [x] Model embeddingów (obsługa polskiego) -> `sdadas/mmlw-retrieval-roberta-large`, baza ChromaDB, parser Docling
 - [x] Zakres sylabusów (który kierunek, ile dokumentów) -> Informatyka, I stopień, stacjonarne, blok AI,
-  cykl 2026/2027, 51 kart z `krk.prz.edu.pl` (kontrakt w `docs/tasks.md`)
+  cykl 2026/2027, 51 kart z `krk.prz.edu.pl` (kontrakt w `docs/tasks.md`); pobrane 2026-11-25
+  skryptem `scripts/fetch_cards.py`, opis w `data/manifest.csv`
 - [x] Metryka wierności (ręczna ocena vs LLM-as-judge) -> ręczna ocena obu osób; lokalny LLM-as-judge
   po przejściu na Ollama (T-10)
 - [x] Skład zespołu i podział pracy -> Oliwier (rdzeń RAG, UI, prompty), Ignacy (dane, ewaluacja); `docs/tasks.md`
