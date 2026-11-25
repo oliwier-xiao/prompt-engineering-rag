@@ -91,6 +91,8 @@ uruchamiamy, testujemy i przeglądamy pod kątem bezpieczeństwa.
 - Embeddingi: `sdadas/mmlw-retrieval-roberta-large` (prefiks zapytań `zapytanie: `).
   Baza: ChromaDB w `data/chroma/`. Parser: Docling. Python 3.12 w `.venv` przez `uv`.
 - Uruchomienie: `.venv/bin/python src/ingest.py`, potem `.venv/bin/python src/app.py`.
+  Seria pytań w obu trybach: `.venv/bin/python src/run_eval.py --prompt v2` (domyślnie
+  `eval/questions.csv`; wyniki JSONL + CSV do oceny w `experiments/results/`). Po ingeście zrestartuj UI.
 - Do LLM trafiają tylko fragmenty z indeksu po usunięciu danych osobowych (ingest). Nowe
   zależności: przypięta wersja w `requirements.txt`, wpis w ADR przy zmianie warstwy stacku.
 

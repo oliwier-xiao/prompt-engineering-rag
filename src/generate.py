@@ -50,19 +50,20 @@ def _log(record: dict) -> None:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
-def answer(question: str, use_rag: bool) -> dict:
+def answer(question: str, use_rag: bool, prompt_version: str | None = None, log: bool = True) -> dict:
     """Return the answer, retrieved chunks and the settings used; append the run to the log."""
+    prompt_version = prompt_version or config.PROMPT_VERSION
     if not config.LLM_MODEL or not config.LLM_API_KEY:
         raise RuntimeError("Ustaw LLM_MODEL i LLM_API_KEY w pliku .env (szablon: .env.example).")
 
     chunks = index.search(question, config.TOP_K) if use_rag else []
     messages = [
-        {"role": "system", "content": load_system_prompt(config.PROMPT_VERSION)},
+        {"role": "system", "content": load_system_prompt(prompt_version)},
         {"role": "user", "content": build_user_message(question, chunks)},
     ]
     settings = {
         "mode": "rag" if use_rag else "no_rag",
-        "prompt_version": config.PROMPT_VERSION,
+        "prompt_version": prompt_version,
         "llm_base_url": config.LLM_BASE_URL,
         "llm_model": config.LLM_MODEL,
         "temperature": config.LLM_TEMPERATURE,
@@ -91,7 +92,8 @@ def answer(question: str, use_rag: bool) -> dict:
             for c in chunks
         ],
     }
-    _log(record)
+    if log:
+        _log(record)
     return record | {"chunks": chunks}
 
 

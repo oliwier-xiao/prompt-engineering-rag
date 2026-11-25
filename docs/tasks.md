@@ -34,8 +34,8 @@ Statusy: `todo`, `w toku`, `gotowe`, `zablokowane`.
 | T-04 | [Ignacy] | Kontrola danych osobowych: ingest na pełnym zbiorze, ręczny przegląd 5 losowych kart w indeksie | raport w PR | todo |
 | T-05 | [Ignacy] | Zestaw `eval/questions.csv`: min. po 5 pytań w każdej z 5 kategorii z `eval/README.md` | `eval/**` | todo |
 | T-06 | [Oliwier] | Przejście na Ollama: Bielik 11B (zapas 4.5B), aktualizacja `.env.example` i ADR | `.env.example`, `docs/adr-001-stack.md` (PR) | todo |
-| T-07 | [Oliwier] | Skrypt wsadowy: pytania z `eval/` w obu trybach, wyniki do `experiments/results/` | `src/**`, `experiments/**` | todo |
-| T-08 | [Oliwier] | Prompty v2 i v3 z opisem zmian | `prompts/v2.md`, `prompts/v3.md` | todo |
+| T-07 | [Oliwier] | Skrypt wsadowy: pytania z `eval/` w obu trybach, wyniki do `experiments/results/` | `src/**`, `experiments/**` | gotowe (`src/run_eval.py`) |
+| T-08 | [Oliwier] | Prompty v2 i v3 z opisem zmian | `prompts/v2.md`, `prompts/v3.md` | w toku: v2 gotowe, v3 todo |
 | T-09 | [Ignacy] | Ręczna ocena wyników (skala: poprawna / halucynacja / niepotrzebna odmowa + zgodność cytatu) | `eval/**` | todo |
 | T-10 | [Ignacy] | Lokalny LLM-as-judge po T-06, porównanie z oceną ręczną | `eval/**` | todo |
 | T-11 | [Oliwier] | Raport: architektura, strategia promptowania, techniki | `raport/sections/**` (PR) | todo |
@@ -43,7 +43,7 @@ Statusy: `todo`, `w toku`, `gotowe`, `zablokowane`.
 | T-13 | wspólne | Raport: zagrożenia, wnioski, podział pracy; prezentacja z demo | `raport/sections/**` (PR) | todo |
 | T-14 | [Oliwier] | UI: panel źródeł domyślnie zwinięty, czytelny komunikat przy 429, wyższe okno czatu | `src/app.py` | todo |
 | T-15 | [Oliwier] | Pytania agregujące (np. ,,który przedmiot ma najwięcej godzin''): top_k=5 nie obejmie 51 kart; metadane ECTS/godzin z ingestu albo opis jako ograniczenie | `src/**` | todo |
-| T-16 | [Oliwier] | Prompt v2: sprzeczność reguł 2 i 3 (tryb Bez RAG raz odmawia, raz odpowiada ogólnie), próg podobieństwa w logu | `prompts/v2.md`, `src/**` | todo |
+| T-16 | [Oliwier] | Prompt v2: sprzeczność reguł 2 i 3 (tryb Bez RAG raz odmawia, raz odpowiada ogólnie), próg podobieństwa w logu | `prompts/v2.md`, `src/**` | w toku: v2 gotowe, próg podobieństwa todo |
 | T-17 | [Oliwier] | Z RAG-Anything (tylko pomysły, bez zależności): kontekst sąsiednich chunków do tabel | `src/ingest.py` | todo |
 
 ## Kontrakt danych: `data/raw/`

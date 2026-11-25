@@ -329,3 +329,19 @@ promptu v1), pytania agregujące zależne od top\_k, surowy komunikat 429 w UI. 
 ocenił RAG-Anything: indeksowanie przez LLM (ok. 1700--2800 wywołań, pełna treść do LLM)
 niezgodne z limitem i zasadą danych; przejęte tylko pomysły (T-17). Log testu:
 \texttt{experiments/results/2026-11-25\_smoke-v0\_nemotron\_sample.jsonl}; zadania T-14--T-17.}
+
+\promptentry{O10}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{nieustalone}
+  {Prompt systemowy v2 i skrypt wsadowy ewaluacji (T-07)}
+\begin{lstlisting}
+wypchnij na oliwier-ui i rób v2 promptu i T-07
+\end{lstlisting}
+\promptresult{\texttt{prompts/v2.md}: osobne reguły dla trybu z fragmentami (A) i bez nich (B),
+stała formuła odmowy, stały nagłówek odpowiedzi ogólnej, sprawdzanie pola ,,Przedmiot:'',
+zakaz danych osobowych. \texttt{src/run\_eval.py}: pytania z CSV w obu trybach, ponowienia
+po 429, wyniki JSONL i arkusz CSV z pustymi kolumnami do oceny ręcznej;
+\texttt{generate.answer} dostał parametry \texttt{prompt\_version} i \texttt{log}. Zestaw
+8 pytań syntetycznych w \texttt{data/sample/questions.csv}. Przebieg v2 na Nemotronie:
+16/16 zapytań bez błędu; tryb Bez RAG 8/8 ze stałym nagłówkiem (v1: zachowanie zmienne),
+tryb Z RAG 8/8 zgodnie z oczekiwaniem. Przykład do analizy: bez RAG model podał
+,,najczęściej 4 lub 5 ECTS'' dla przedmiotu, który w karcie ma 3. Błąd w trakcie: kropka
+w nazwie modelu ucinała nazwę pliku wyników (\texttt{Path.with\_suffix}); poprawione.}
