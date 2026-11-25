@@ -23,7 +23,7 @@ i nazwisko koordynatora oraz prowadzących.
 | Warstwa | Wybór | Wersja |
 |---|---|---|
 | UI | Gradio, `gr.ChatInterface`, źródła jako wiadomość z `metadata.title` (zwijany panel) | `>=6.32,<7` |
-| LLM (start) | OpenRouter, model `:free` ustawiany w `.env` (`LLM_MODEL`), klient zgodny z API OpenAI | `openai>=2,<3` |
+| LLM (start) | OpenRouter, `nvidia/nemotron-3.5-super-vl:free` (dostawca: Nvidia), model w `.env` (`LLM_MODEL`), klient zgodny z API OpenAI | `openai>=2,<3` |
 | LLM (docelowo) | Ollama lokalnie, `SpeakLeash/bielik-11b-v3.1-instruct:Q4_K_M`, zapas `bielik-4.5b-v3.0-instruct:Q8_0` | zadanie T-06 w `docs/tasks.md` |
 | Embeddingi | `sdadas/mmlw-retrieval-roberta-large` (1024 wym., 512 tokenów, Apache-2.0), prefiks zapytań `zapytanie: ` | `sentence-transformers>=5,<6` |
 | Baza wektorowa | ChromaDB, `PersistentClient` w `data/chroma/`, odległość kosinusowa | `>=1.5.9,<2` |
@@ -72,7 +72,10 @@ i `LLM_MODEL` w `.env`.
    i telefony przed indeksowaniem, (c) w ustawieniach prywatności OpenRouter wyłączamy
    logowanie promptów, (d) nie wysyłamy danych użytkowników ani innych plików,
    (e) przejście na Ollama (T-06) jako cel.
-2. **Dostępność modeli `:free`.** Lista zmienia się często, limit 20 zapytań/min i 50 dziennie
+2. **Dostępność modeli `:free`.** 2026-11-25: `google/gemma-4-31b-it:free` i `gemma-4-26b-a4b-it:free`
+   zwracały stale 429 (wspólna pula Google AI Studio), dlatego start na Nemotronie. Płatna
+   `google/gemma-4-31b-it` (ok. 0,0005 USD za zapytanie z RAG) odłożona: konto bez kredytów.
+   Lista zmienia się często, limit 20 zapytań/min i 50 dziennie
    (1000 po zakupie min. 10 kredytów). Model zawsze w `.env`, nigdy na sztywno w kodzie.
 3. **Jakość polszczyzny modeli `:free`** nieznana [niezweryfikowane]; mierzymy na `eval/`.
 4. **Odtwarzalność.** Modele `:free` nie gwarantują determinizmu. Każde zapytanie zapisuje

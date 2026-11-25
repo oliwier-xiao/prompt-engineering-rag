@@ -293,3 +293,18 @@ z zasadą z promptu O5. Diagnostycznie \texttt{nvidia/nemotron-3.5-super-vl:free
 syntetycznej: poprawna odpowiedź z cytatem [1] (11,3~s) i poprawna odmowa dla przedmiotu
 spoza bazy (3,7~s); log ustawień kompletny. UI uruchomione lokalnie na porcie 7860 z modelem
 Nemotron ustawionym zmienną środowiskową (bez zmiany \texttt{.env}).}
+
+\promptentry{O8}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{nieustalone}
+  {Nemotron jako domyślny model, wypchnięcie gałęzi Oliwier-UI}
+\begin{lstlisting}
+nie dodalem zostanmy na nemotronie i ruszmy z nemotronem wrzuc to na oliwier-ui
+
+[Kontekst: wcześniej użytkownik wkleił dokumentację OpenRouter płatnego modelu
+google/gemma-4-31b-it (ceny dostawców, opis API); agent sprawdził konto: darmowy plan,
+brak kredytów, i przedstawił koszt ok. 0,0005 USD za zapytanie z RAG.]
+\end{lstlisting}
+\promptresult{Konto bez kredytów, więc zostaje darmowy model:
+\texttt{nvidia/nemotron-3.5-super-vl:free} ustawiony domyślnie w \texttt{.env}
+i \texttt{.env.example} (Gemma \texttt{:free} jako zakomentowana alternatywa z adnotacją
+o błędach 429). ADR-001 zaktualizowany: model startowy i powód zmiany. Gałąź
+\texttt{Oliwier-UI} wypchnięta na \texttt{origin}.}
