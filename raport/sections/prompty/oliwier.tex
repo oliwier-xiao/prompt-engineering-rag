@@ -275,3 +275,21 @@ jako O1--O5 (\texttt{git mv}, historia pliku zachowana). Wpisy zeszły o poziom 
 (\texttt{\textbackslash subsubsection*}), osoba to \texttt{\textbackslash subsection}. Zasady
 w \texttt{CLAUDE.md} (wybór pliku po \texttt{git config user.name}), sekcja ,,Flow pracy''
 w \texttt{docs/tasks.md}, odwołania w README i ADR zaktualizowane.}
+
+\promptentry{O7}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{nieustalone}
+  {Odśledzenie PDF, praca na gałęzi Oliwier-UI, test z OpenRouter (Gemma), podgląd UI}
+\begin{lstlisting}
+odsledz pdf i narazie nie rzucamy na main commitujemy juz na oliwier-ui branch i
+przechodzimy do testow z .env openrouter gemma modelem pierwsze ten i tez chcialbym
+zobaczyc juz to UI
+\end{lstlisting}
+\promptresult{\texttt{raport/main.pdf} usunięty z indeksu i dopisany do \texttt{.gitignore}.
+Praca przeniesiona na istniejącą zdalną gałąź \texttt{Oliwier-UI} (lokalna utworzona od
+\texttt{main}); nazwy gałęzi w \texttt{docs/tasks.md} poprawione na \texttt{Oliwier-UI}
+i \texttt{Ignacy-data}. Test z \texttt{google/gemma-4-31b-it:free}: klucz poprawny, ale
+6 z 6 zapytań odrzuconych kodem 429 (\texttt{upstream\_provider\_shared\_pool}, Google AI
+Studio); \texttt{gemma-4-26b-a4b-it:free} tak samo. Po dwóch próbach test przerwany zgodnie
+z zasadą z promptu O5. Diagnostycznie \texttt{nvidia/nemotron-3.5-super-vl:free} na karcie
+syntetycznej: poprawna odpowiedź z cytatem [1] (11,3~s) i poprawna odmowa dla przedmiotu
+spoza bazy (3,7~s); log ustawień kompletny. UI uruchomione lokalnie na porcie 7860 z modelem
+Nemotron ustawionym zmienną środowiskową (bez zmiany \texttt{.env}).}

@@ -28,7 +28,7 @@ Statusy: `todo`, `w toku`, `gotowe`, `zablokowane`.
 
 | ID | Właściciel | Zadanie | Pliki | Status |
 |---|---|---|---|---|
-| T-01 | [Oliwier] | Prototyp v0: ingest, chunking, indeks Chroma, tryby bez RAG / z RAG, UI Gradio | `src/**`, `requirements.txt`, `.env.example` | gotowe; wywołanie LLM do sprawdzenia po dodaniu klucza do `.env` |
+| T-01 | [Oliwier] | Prototyp v0: ingest, chunking, indeks Chroma, tryby bez RAG / z RAG, UI Gradio | `src/**`, `requirements.txt`, `.env.example` | gotowe; LLM sprawdzony 2026-11-25 na `nvidia/nemotron-3.5-super-vl:free` (Gemma `:free`: 429 ze wspólnej puli Google) |
 | T-02 | [Oliwier] | Prompt v1 (bazowy) | `prompts/v1.md` | gotowe |
 | T-03 | [Ignacy] | Pobranie 51 kart zajęć bloku AI zgodnie z kontraktem niżej, `data/manifest.csv` | `data/raw/**`, `data/manifest.csv` | w toku |
 | T-04 | [Ignacy] | Kontrola danych osobowych: ingest na pełnym zbiorze, ręczny przegląd 5 losowych kart w indeksie | raport w PR | todo |
