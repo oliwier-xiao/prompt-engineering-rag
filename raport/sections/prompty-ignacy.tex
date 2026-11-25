@@ -78,3 +78,14 @@ zgodą zespołu), \texttt{docs/tasks.md} (pobieranie, T-03 gotowe, \texttt{scrip
 Ignacego, zasady dziennika), \texttt{docs/plan.md}, \texttt{CLAUDE.md}, README, projekt w
 \texttt{docs/superpowers/specs/} (stan końcowy, uwagi dla ingestu).}
 
+\promptentry{I6}{2026-11-25}{Claude Opus 5.5 (\texttt{claude-opus-5-5}), Claude Code}{high}
+  {Scalenie gałęzi Ignacy-data z main}
+\begin{lstlisting}
+zpulluj to do maina i rozwiaz konflikty
+\end{lstlisting}
+\promptresult{Dokończone scalanie \texttt{origin/main} (ADR-001, prototyp v0) z gałęzią
+\texttt{Ignacy-data}: konflikt w dzienniku rozwiązany wcześniej przez podział na pliki osób,
+pozostałe pliki scalone automatycznie. Gałąź przeniesiona na \texttt{main} (fast-forward) i
+wypchnięta. Wcześniej dodano wygenerowany prompt (prompt-master) do uruchomienia T-04; nie
+zmieniał repozytorium.}
+
